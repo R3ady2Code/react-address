@@ -23,8 +23,8 @@ const AddressPage = () => {
   return (
     <div className="container">
       <h1>Поиск адресов</h1>
-      <h3 className={errorValidte ? 'error' : ''}>
-        {errorValidte ? errorValidte : 'Введите интересующий вас адрес'}
+      <h3 className={errorValidte && !addresses.length ? 'error' : ''}>
+        {errorValidte && !addresses.length ? errorValidte : 'Введите интересующий вас адрес'}
       </h3>
       <div className="search-container">
         <SearchInput

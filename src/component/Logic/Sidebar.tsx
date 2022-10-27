@@ -39,6 +39,11 @@ const Sidebar = () => {
 
   const [openSettings, setOpenSettings] = React.useState(true);
 
+  function onClickToLink(link: string) {
+    setActiveLink(link);
+    if (link === 'settings') setOpenSettings(!openSettings);
+  }
+
   return (
     <div className="sidebar">
       <div className="sidebar__inner">
@@ -46,7 +51,7 @@ const Sidebar = () => {
         <nav className="nav">
           <ul className="nav__menu">
             {links.map((item) => (
-              <li className="nav__menu-item" onClick={() => setActiveLink(item.link)} key={item.id}>
+              <li className="nav__menu-item" onClick={() => onClickToLink(item.link)} key={item.id}>
                 <Link
                   to={item.link}
                   className={`nav__menu-link ${
@@ -58,8 +63,7 @@ const Sidebar = () => {
                     <img
                       src={PolygonIcon}
                       alt="icon"
-                      className="polygon"
-                      onClick={() => setOpenSettings(!openSettings)}
+                      className={`polygon ${openSettings && 'polygon_active'}`}
                     />
                   )}
                 </Link>
